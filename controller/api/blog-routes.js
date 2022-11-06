@@ -1,20 +1,29 @@
 const router = require('express').Router();
-const { Blog, Post  } = require('../../models');
+const { Blog, User, Post  } = require('../../models');
 
 // 
-
 router.get('/', async (req, res) => {
-  // 
   try {
     const blogData = await Blog.findAll({
-      // 
-      include: [{ model: Post }],
+      include: [
+        {
+          model: User,
+          attributes: ['user_name'],
+        },
+      ],
     });
-    res.status(200).json(blogData);
+
+    const blogs = blogData.map((blog) =>
+      blog.get({ plain: true })
+    );
+
+    res.render('home', {
+      blogs
+    });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
-  // 
 });
 
 router.get('/:id', async (req, res) => {
