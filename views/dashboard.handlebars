@@ -1,15 +1,28 @@
-<div class="container">
-  <div class="card-header col-md-10">
-    <h2>
-      
-    </h2>
+ <div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#dashboard" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DASHBOARD</a>
+    <a href="#login" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOG IN</a>
+    <a href="#logout" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOG OUT</a>
+    </div>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
   </div>
+</div>
   <!-- For each dish in the array of dish objects, the following <div> will be rendered. -->
   {{#each }}
-    <div class="dish col-md-5">
+    <div class="dashboard col-md-5">
       <!-- We use dish.id instead of <od> and <li> elements. -->
-      <p>
-        {{}}.
+      <p id = "home">
+        {{}}
+      </p>
+      <p id = "dashboard">
+        {{}}
+      </p>
+      <p id = "login">
+        {{}}
+      </p>
+      <p id = "logout">
         {{}}
       </p>
     </div>
