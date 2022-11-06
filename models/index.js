@@ -1,24 +1,29 @@
-const Blog = require('./blog');
-const Post = require('./post');
-const User = require('./user');
+const Blog = require('./Blog');
+const Post = require('./Post');
+const User = require('./User');
 
 // 
-Blog.belongsTo(Post, {
+Post.belongsTo(Blog, {
   foreignKey: "blog_id",
   onDelete: "CASCADE",
 });
 // 
-Post.hasMany(Blog, {
+Blog.hasMany(Post, {
   foreignKey: "blog_id"
 })
 // 
-Blog.belongsToMany(User, {
-  through: ProductTag,
-  foreignKey: "blog_id"
+Blog.belongsTo(User, {
+  foreignKey: "user_id"
 })
 // 
-User.belongsToMany(Blog, {
-  through: ProductTag,
+User.hasMany(Blog, {
+  foreignKey: "user_id"
+})
+Post.belongsTo(User, {
+  foreignKey: "user_id"
+})
+// 
+User.hasMany(Post, {
   foreignKey: "user_id"
 });
 

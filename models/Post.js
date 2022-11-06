@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const { Post } = require('.');
 // 
 const sequelize = require('../config/connection');
 
@@ -16,11 +15,24 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    post_name: {
+    post: {
       type: DataTypes.STRING,
-      foreignKey: 'user',
       allowNull: false
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id"
+      }
+    },
+    blog_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "blog",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,

@@ -1,20 +1,30 @@
 const { Blog } = require('../models');
 
-const categoryData = [
+const blogData = [
   {
-    blog_name: '1',
+    blog_name: 'user',
+    blog: 'dear diary',
+    user_id: 1 
   },
   {
-    blog_name: '2',
+    blog_name: 'user',
+    blog: 'dear diary',
+    user_id: 1 
   },
   {
-    blog_name: '3',
+    blog_name: 'user',
+    blog: 'dear diary',
+    user_id: 1 
   },
   {
-    blog_name: '4',
+    blog_name: 'user',
+    blog: 'dear diary',
+    user_id: 1 
   },
   {
-    blog_name: '5',
+    blog_name: 'user',
+    blog: 'dear diary',
+    user_id: 1 
   },
 ];
 
