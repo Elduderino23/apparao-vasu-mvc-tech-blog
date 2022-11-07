@@ -2,7 +2,39 @@
   <div class="">
     
   </div>
+  <ol class = "post-list">
+    {{#each blogs}}
+    <li>
+      <article>
+        <div class="title">
+          <a href="{{blog_name}}" target="_blank">{{blog_name}}</a>
+          <span>{{blog_name}}</span>
+        </div>
+        <div class="meta">
+         <textarea>  
+          {{blog}}
+          {{vote_count}} point(s) by {{user.user_name}} on 
+        {{createdAt}}
+        |
+        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
+         </textarea>
+        </div>
+        </article>
+      </article>
+    </li>
+    {{/each}}
+  {{!-- </ol>
   <div class="blog_name">
+    <p>
+      {{blog_name}}
+      {{blog}}
+    </p>
+  </div>
+
+  </ol>
+</div> --}}
+
+{{!-- <div class="blog_name">
     <p>
       {{blog_name}}
       {{blog}}
@@ -12,5 +44,4 @@
       {{blog}}
     </p>
 
-  </div>
-</div>
+  </div> --}}
