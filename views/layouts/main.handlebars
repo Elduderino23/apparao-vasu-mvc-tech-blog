@@ -20,9 +20,27 @@ and is wrapped around the whole page content, except for the footer in this exam
 <header class="w3-container w3-center w3-padding-32"> 
   <h1><b>MVC TECH BLOG</b></h1>
   <p>Welcome to the blog of <span class="w3-tag">unknown</span></p>
-  <a href="/">Home</a>
-    {{#if loggedIn}}
+     <a href="/"></a>
+    {{#if home}}
+    <button id="home" class="btn-no-style">Home</button>
+    {{else}}
+    <a href="/home">Home</a>
+    {{/if}}
+   <a href="/"></a>
+    {{#if dashboard}}
+    <button id="dashboard" class="btn-no-style">Dashboard</button>
+    {{else}}
+    <a href="/dashboard">Dashboard</a>
+    {{/if}}
+    <a href="/"></a>
+    {{#if loggedOut}}
     <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/logout">Logout</a>
+    {{/if}}
+  <a href="/"></a>
+    {{#if loggedIn}}
+    <button id="login" class="btn-no-style">Login</button>
     {{else}}
     <a href="/login">Login</a>
     {{/if}}
