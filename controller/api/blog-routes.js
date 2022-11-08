@@ -26,16 +26,16 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   // 
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       // 
-      include: [{ model: Post }],
+      include: [{ model: User }],
     });
 
     if (!blogData) {
-      res.status(404).json({ message: 'No blog id found!' });
+      res.status(404).json({ message: 'No blog1 id found!' });
       return;
     }
 
@@ -67,7 +67,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!blogData) {
-      res.status(404).json({ message: 'No blog id found!' });
+      res.status(404).json({ message: 'No blog2 id found!' });
       return;
     }
 
