@@ -7,50 +7,16 @@ const { User, Blog, Post } = require('../../models');
 router.get('/login', async (req, res) => {
  
   try {
-    const userData = await User.findAll({
-      include: [
-        {
-          model: Blog,
-          attributes: ['user_name'],
-        },
-      ],
-    });
-
-    const users = userData.map((blog) =>
-      blog.get({ plain: true })
-    );
 
     res.render('login', {
-      users
+      
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-  // try {
-  //   const userData = await User.findAll({
-  //     include: [
-  //       {
-  //         model: Blog,
-  //         attributes: ['user_name', 'password'],
-  //       },
-  //     ],
-  //   });
 
-  //   const user = userData.map((user) =>
-  //     user.get({ plain: true })
-  //   );
-  //   // Send over the 'loggedIn' session variable to the 'homepage' template
-  //   res.render('login', {
-  //     user,
-  //     loggedIn: req.session.loggedIn,
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(500).json(err);
-  // }
-// });
   //
 
 router.get('/user/:id', async (req, res) => {
@@ -108,9 +74,28 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   // 
- 
-  console.log('login routes engaged')
+  try {
+    const userData = await User.findAll({
+      include: [
+        {
+          model: Blog,
+          attributes: ['user_name', 'password'],
+        },
+      ],
+    });
 
+    const user = userData.map((user) =>
+      user.get({ plain: true })
+    );
+    // Send over the 'loggedIn' session variable to the 'homepage' template
+    res.render('login', {
+      user,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get('/login', (req, res) => {
