@@ -52,7 +52,7 @@ router.get('/user/:id', async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    // Send over the 'loggedIn' session variable to the 'gallery' template
+    // 
     res.render('', { user, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -74,28 +74,32 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   // 
-  try {
-    const userData = await User.findAll({
-      include: [
-        {
-          model: Blog,
-          attributes: ['user_name', 'password'],
-        },
-      ],
-    });
+  // try {
+  //   const userData = await User.findOne({ where: {user_name: req.user_name}
+  //     if (userData) {
+  //       res.status(404).json({ message: 'Mission failed, we will get them next time'});
 
-    const user = userData.map((user) =>
-      user.get({ plain: true })
-    );
-    // Send over the 'loggedIn' session variable to the 'homepage' template
-    res.render('login', {
-      user,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  //     }
+    //   include: [
+    //     {
+    //       model: Blog,
+    //       attributes: ['user_name', 'password'],
+    //     },
+    //   ],
+    // });
+
+  //   const user = userData.map((user) =>
+  //     user.get({ plain: true })
+  //   );
+  //   // Send over the 'loggedIn' session variable to the 'homepage' template
+  //   res.render('login', {
+  //     user,
+  //     loggedIn: req.session.loggedIn,
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(500).json(err);
+  // }
 });
 
 router.get('/login', (req, res) => {

@@ -1,4 +1,132 @@
-# 14 Model-View-Controller (MVC): Tech Blog
+# MVC Tech BLog
+
+## Deployable Video Link
+
+
+## Goal
+The task was to make a MVC Tech blog using backend development.
+
+## Technology Use
+  - Javascript
+  - Node.js
+  - Handlebars
+  - Mysql2
+  - Express
+  - Express-Handlebar
+  - VS Code
+  - Git Bash 
+  - GitHub
+
+## Execution
+The first part of making the tech blog was to make a setup schema.sql, seeds.sql, index.js and gitignore files. After downloading the right versions of express, handlebars, , the tricky part was to make functions that would work with MySQL in order to generate the blog. The following is the schema used to make the table.
+
+schema.sql code:
+```SQL
+DROP DATABASE IF EXISTS techblog_db;
+CREATE DATABASE techblog_db;
+
+```
+After inputting the following sql file into the MySQL system, the next step was to makes seeds.js files, model.js files, handlebar files, index.js files for each section. the models looked like the ones below:
+```Javascript
+const { Model, DataTypes } = require('sequelize');
+
+const sequelize = require('../config/connection');
+
+class Blog extends Model {}
+
+Blog.init(
+  {
+    // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    blog_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    blog: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id"
+      }
+    }
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'blog',
+  }
+);
+
+module.exports = Blog;
+```
+```Javascript
+const { Model, DataTypes } = require('sequelize');
+// 
+const sequelize = require('../config/connection');
+
+// 
+class Post extends Model {}
+
+// 
+Post.init(
+  {
+    // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    post: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id"
+      }
+    },
+    blog_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "blog",
+        key: "id"
+      }
+    }
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'post',
+  }
+);
+
+module.exports = Post;
+```
+After making the models, routes that routed the information to other files and to function like pressing a button that sends the user to the other page and storing user input to the backend server. An easy analogy is routes act a lot like highways to cities. They have to go somewhere.
+
+The last part of making the tech blog was making handlebars connect to everything.
+## Result
+
+The following website demonstrates what the final product looks like:
+
+
+<!-- # 14 Model-View-Controller (MVC): Tech Blog
 
 ## Your Task
 
@@ -133,4 +261,4 @@ You are required to submit BOTH of the following for review:
 * The URL of the GitHub repository, with a unique name and a readme describing the project.
 
 ---
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved. -->
