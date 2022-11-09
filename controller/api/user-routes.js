@@ -78,8 +78,9 @@ router.post('/login', async (req, res) => {
   //   const userData = await User.findOne({ where: {user_name: req.user_name}
   //     if (userData) {
   //       res.status(404).json({ message: 'Mission failed, we will get them next time'});
-
+  //       return;
   //     }
+  // const approvePassword = await.userData.checkPassword(req.body.password)
     //   include: [
     //     {
     //       model: Blog,
