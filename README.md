@@ -1,6 +1,7 @@
 # MVC Tech BLog
 
 ## Deployable Video Link
+https://git.heroku.com/apparao-vasu-mvc-tech-blog.git
 
 
 ## Goal
