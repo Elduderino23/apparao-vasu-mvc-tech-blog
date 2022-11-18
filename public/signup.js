@@ -18,7 +18,7 @@ const signupFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Failed to sign up.');
+        alert('Failed to sign up. Must have 8 character password');
       }
     }
   };
@@ -39,7 +39,7 @@ const signupFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Failed to log in.');
+        alert('Failed to log in. Must have 8 character password');
       }
     }
   };
